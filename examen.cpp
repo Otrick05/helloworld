@@ -384,7 +384,7 @@ switch (decena) //////////////////////////////////////////////////////////// dec
         {
  numaletra=numaletra + " Diez";           
         }else {
-            switch (umillar)
+            switch (unidad)
             {
             case 1:
                 numaletra=numaletra + " Once";
