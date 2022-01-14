@@ -7,7 +7,7 @@ int main() {
 	double answ=0;
 	int cmillar=0,dmillar=0,umillar=0,centena=0,decena=0,unidad=0,centavos=0;
 	cout << "Ingrese un número del 0 al 999,999.99" << endl;
-	cin>>answw;	
+	cin>>answw;	 
 	answ=stod(answw);
 	if (answ>=100000) 
 	{
@@ -546,22 +546,6 @@ centavossub=centavostr.substr(2,2);
     cout << "Son " << numaletra << " Pesos " << centavossub << "00/100 M.N." << '\n';    
 }else{cout << "Son " << numaletra << " Pesos " << centavossub << "/100 M.N." << '\n';    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	return 0;
