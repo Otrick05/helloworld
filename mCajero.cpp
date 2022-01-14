@@ -12,7 +12,7 @@ void savedata();
 void admin();
 int checkcuenta();
 int menu2();
-
+bool check();
 string password[50];
 string account[50];
 double accbalance[50];
@@ -150,7 +150,7 @@ void savedata(){
 
  outarchpassw.open("C://CArchivopassw.txt",ios::out);
 
- outarchbalcuentas.open("C://CArchivocentasbal.txt",ios::out);
+ outarchbalcuentas.open("C://CArchivocuentasbal.txt",ios::out);
 
  outarchownername.open("C://CArchivoaccowner.txt",ios::out);
 
@@ -205,7 +205,7 @@ int answ2;
   cin>> answ1;
   if (answ1>0 && answ1<5)
   {
-   cout << "Compañía : "<<endl; 
+   cout << "Regarca de : "<<endl; 
    cout << "1.-$30"<<endl; 
    cout << "2.-$50"<<endl; 
    cout << "3.-$100"<<endl;
@@ -214,59 +214,46 @@ int answ2;
    cout << "0.-Salir"<<endl;
    cout << "Digite la opción deseada :"; 
    cin >> answ2;
-   int iter=0;
-   int iter2=0;
+   bool varcheck=false;
 switch (answ2)
   {
   case 1:
-  cout << "Digite su numero de teléfono :";
-  cin>>iter;
-  cout << "Digite su numero de teléfono :";
-  cin>>iter2;
-    if (iter==iter2)
+  
+    if (check()==true)
     {
         balance-=30;
-    }
+        cout <<"Recarga exitosa!"<<endl;
+    }else{cout<<"Los números ingresados no coinsiden;"<<endl;}
       break;
   case 2:
-        cout << "Digite su numero de teléfono :";
-  cin>>iter;
-  cout << "Digite su numero de teléfono :";
-  cin>>iter2;
-    if (iter==iter2)
+       if (check()==true)
     {
+        cout <<"Recarga exitosa!"<<endl;
         balance-=50;
-    }
+    }else{cout<<"Los números ingresados no coinsiden;"<<endl;}
+        
+    
       break;
   case 3:
-        cout << "Digite su numero de teléfono :";
-  cin>>iter;
-  cout << "Digite su numero de teléfono :";
-  cin>>iter2;
-    if (iter==iter2)
+        if (check()==true)
     {
+        cout <<"Recarga exitosa!"<<endl;
         balance-=100;
-    }
+    }else{cout<<"Los números ingresados no coinsiden;"<<endl;}
       break;
 case 4:
-        cout << "Digite su numero de teléfono :";
-  cin>>iter;
-  cout << "Digite su numero de teléfono :";
-  cin>>iter2;
-    if (iter==iter2)
+  if (check()==true)
     {
+        cout <<"Recarga exitosa!"<<endl;
         balance-=200;
-    }
+    }else{cout<<"Los números ingresados no coinsiden;"<<endl;}
       break;
 case 5:
-  cout << "Digite su numero de teléfono :";
-  cin>>iter;
-  cout << "Digite su numero de teléfono :";
-  cin>>iter2;
-    if (iter==iter2)
+  if (check()==true)
     {
+        cout <<"Recarga exitosa!"<<endl;
         balance-=500;
-    }
+    }else{cout<<"Los números ingresados no coinsiden;"<<endl;}
       break;
 case 0:cout << "Se ha cancelado la recarga ";
 
@@ -276,12 +263,13 @@ case 0:cout << "Se ha cancelado la recarga ";
   }
 }
 accbalance[entrada]=balance;
-savedata();
+
 }
 
 
 int menu2(){
 int answ;
+bool exito=true;
   cout << "Desea : "<<endl; 
   cout << "1.- Retirar"<<endl; 
   cout << "2.- Consultar Saldo"<<endl; 
@@ -330,6 +318,7 @@ case 1:
         if (answc1 > balance)
         {
             cout << "Saldo insuficiente"<<endl;
+            exito=false;
         }
         else if (balance>=answc1)
         {
@@ -343,6 +332,7 @@ case 1:
     else
     {
         cout<<"Digite una cantidad u opción correcta porfavor!"<<endl;
+        exito=false;
     }
     break;
 case 2:
@@ -375,9 +365,9 @@ double dinero;
       balance-=dinero;
       accbalance[answc3]+=dinero;
 
-        }else{cout << "El saldo en su cuenta no es suficiente para realizar la transferencia!"<<endl;}
+        }else{cout << "El saldo en su cuenta no es suficiente para realizar la transferencia!"<<endl; exito=false;}
 
-    }else{cout << "No se puede transferir a su propia cuenta"<<endl;}
+    }else{cout << "No se puede transferir a su propia cuenta"<<endl;exito=false;}
     break;
 case 4:
  string newpass,newpass2,answww;
@@ -397,15 +387,16 @@ case 4:
         {
         pass=newpass;
         password[entrada]=pass;
-        }else{cout<<"El nip no tiene la longitud correcta"<<endl;}//condicion para confirmar el nip us1
+        }else{cout<<"El nip no tiene la longitud correcta"<<endl;exito=false;}//condicion para confirmar el nip us1
 
-      }else{cout<<"El nip es incorrecto"<<endl; }
+      }else{cout<<"El nip es incorrecto"<<endl; exito=false;}
     break;
 }
 if (answ==5)
 {
     recarga();
-}else 
+}else if (answ>=0 && answ<5 && exito==true){cout <<"Acción concretada exitosamente!"<<endl;}
+else
 {
     cout<<"Opcion ingresada es incorrecta"<<endl;
 }
@@ -415,4 +406,20 @@ if (answ==5)
 accbalance[entrada]=balance;
 savedata();
 return answ;
+}
+
+bool check(){
+  bool retornar=false;
+string check1,check2;
+cout << "Digite su numero de teléfono :";
+  cin>>check1;
+  
+  cout << "Digite su numero de teléfono :";
+  cin>>check2;
+    if (check1==check2 && check1.length()==10)
+    {
+        retornar=true;
+    }
+      
+return retornar;
 }

@@ -450,7 +450,7 @@ ofstream outarchcatgastos;
     outarchhistocuentas<<information[i] <<endl;
     }
     
-    for (int i=0;i<controlhistgastos;i+=1){
+    for (int i=0;i<=controlhistgastos;i+=1){
     outarchhistogastos<<infogastos[i] <<endl;
     }
  outarchcuentas.close();
