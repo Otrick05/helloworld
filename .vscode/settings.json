@@ -1,5 +1,6 @@
 {
     "files.associations": {
+<<<<<<< Updated upstream
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -52,4 +53,8 @@
         "map": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
+=======
+        "iostream": "cpp"
+    }
+>>>>>>> Stashed changes
 }
